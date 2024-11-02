@@ -32,8 +32,6 @@ minio:
   access-key: minioadmin  # minio的访问密钥
   secret-key: minioadmin # minio的访问秘钥
   bucket-name: tzzz # minio的存储桶名称
-
-
   spring:
     servlet:
       multipart:
