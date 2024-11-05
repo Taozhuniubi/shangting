@@ -3,7 +3,6 @@ package com.atguigu.lease.web.admin.controller.apartment;
 
 import com.atguigu.lease.common.result.Result;
 import com.atguigu.lease.web.admin.service.FileService;
-import com.atguigu.lease.web.admin.service.impl.FileServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+import java.rmi.ServerException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 
 
 @Tag(name = "文件管理")
@@ -24,9 +28,8 @@ public class FileUploadController {
 
     @Operation(summary = "上传文件")
     @PostMapping("upload")
-    public Result<String> upload(@RequestParam MultipartFile file) {
-        String  fileupload= service.upload(file);
-        return Result.ok(fileupload);
+    public Result<String> upload(@RequestParam MultipartFile file) throws Exception {
+        String url = service.upload(file);
+        return Result.ok(url);
     }
-
 }
