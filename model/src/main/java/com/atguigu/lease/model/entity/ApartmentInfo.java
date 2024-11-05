@@ -1,106 +1,68 @@
 package com.atguigu.lease.model.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
+import com.atguigu.lease.model.enums.ReleaseStatus;
 import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import java.io.Serializable;
-import java.util.Date;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
-/**
- * 公寓信息表
- * @TableName apartment_info
- */
-@TableName(value ="apartment_info")
+@Schema(description = "公寓信息表")
+@TableName(value = "apartment_info")
 @Data
-public class ApartmentInfo implements Serializable {
-    /**
-     * 公寓id
-     */
-    @TableId(type = IdType.AUTO)
-    private Long id;
+public class ApartmentInfo extends BaseEntity {
 
-    /**
-     * 公寓名称
-     */
+    private static final long serialVersionUID = 1L;
+
+    @Schema(description = "公寓名称")
+    @TableField(value = "name")
     private String name;
 
-    /**
-     * 公寓介绍
-     */
+    @Schema(description = "公寓介绍")
+    @TableField(value = "introduction")
     private String introduction;
 
-    /**
-     * 所处区域id
-     */
+    @Schema(description = "所处区域id")
+    @TableField(value = "district_id")
     private Long districtId;
 
-    /**
-     * 区域名称
-     */
+    @Schema(description = "所处区域名称")
+    @TableField(value = "district_name")
     private String districtName;
 
-    /**
-     * 所处城市id
-     */
+    @Schema(description = "所处城市id")
+    @TableField(value = "city_id")
     private Long cityId;
 
-    /**
-     * 城市名称
-     */
+    @Schema(description = "所处城市名称")
+    @TableField(value = "city_name")
     private String cityName;
 
-    /**
-     * 所处省份id
-     */
+    @Schema(description = "所处省份id")
+    @TableField(value = "province_id")
     private Long provinceId;
 
-    /**
-     * 省份名称
-     */
+    @Schema(description = "所处区域名称")
+    @TableField(value = "province_name")
     private String provinceName;
 
-    /**
-     * 详细地址
-     */
+    @Schema(description = "详细地址")
+    @TableField(value = "address_detail")
     private String addressDetail;
 
-    /**
-     * 经度
-     */
+    @Schema(description = "经度")
+    @TableField(value = "latitude")
     private String latitude;
 
-    /**
-     * 纬度
-     */
+    @Schema(description = "纬度")
+    @TableField(value = "longitude")
     private String longitude;
 
-    /**
-     * 公寓前台电话
-     */
+    @Schema(description = "公寓前台电话")
+    @TableField(value = "phone")
     private String phone;
 
-    /**
-     * 是否发布（1:发布，0:未发布）
-     */
-    private Integer isRelease;
+    @Schema(description = "是否发布")
+    @TableField(value = "is_release")
+    private ReleaseStatus isRelease;
 
-    /**
-     * 创建时间
-     */
-    private Date createTime;
-
-    /**
-     * 更新时间
-     */
-    private Date updateTime;
-
-    /**
-     * 是否删除
-     */
-    private Integer isDeleted;
-
-    @TableField(exist = false)
-    private static final long serialVersionUID = 1L;
 }

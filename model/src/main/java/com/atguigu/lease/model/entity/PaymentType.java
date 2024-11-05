@@ -1,56 +1,29 @@
 package com.atguigu.lease.model.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
+import io.swagger.v3.oas.annotations.media.Schema;
 import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import java.io.Serializable;
-import java.util.Date;
+import lombok.Builder;
 import lombok.Data;
 
-/**
- * 支付方式表
- * @TableName payment_type
- */
-@TableName(value ="payment_type")
+@Schema(description = "支付方式表")
+@TableName(value = "payment_type")
 @Data
-public class PaymentType implements Serializable {
-    /**
-     * 
-     */
-    @TableId(type = IdType.AUTO)
-    private Long id;
+public class PaymentType extends BaseEntity {
 
-    /**
-     * 付款方式名称
-     */
+    private static final long serialVersionUID = 1L;
+
+    @Schema(description = "付款方式名称")
+    @TableField(value = "name")
     private String name;
 
-    /**
-     * 每次支付租期数
-     */
-    private Integer payMonthCount;
+    @Schema(description = "每次支付租期数")
+    @TableField(value = "pay_month_count")
+    private String payMonthCount;
 
-    /**
-     * 付费说明
-     */
+    @Schema(description = "付费说明")
+    @TableField(value = "additional_info")
     private String additionalInfo;
 
-    /**
-     * 创建时间
-     */
-    private Date createTime;
 
-    /**
-     * 更新时间
-     */
-    private Date updateTime;
-
-    /**
-     * 是否删除
-     */
-    private Integer isDeleted;
-
-    @TableField(exist = false)
-    private static final long serialVersionUID = 1L;
 }

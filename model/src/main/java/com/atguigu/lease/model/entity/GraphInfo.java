@@ -28,4 +28,5 @@ public class GraphInfo extends BaseEntity {
     @Schema(description = "图片地址")
     @TableField(value = "url")
     private String url;
+
 }

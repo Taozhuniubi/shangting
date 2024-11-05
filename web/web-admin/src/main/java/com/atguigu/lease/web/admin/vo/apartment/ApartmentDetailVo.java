@@ -26,5 +26,4 @@ public class ApartmentDetailVo extends ApartmentInfo {
 
     @Schema(description = "杂费列表")
     private List<FeeValueVo> feeValueVoList;
-
 }

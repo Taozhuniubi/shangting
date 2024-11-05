@@ -1,56 +1,37 @@
 package com.atguigu.lease.model.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import java.io.Serializable;
-import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.Date;
 
 /**
- * 浏览历史
  * @TableName browsing_history
  */
-@TableName(value ="browsing_history")
+@TableName(value = "browsing_history")
 @Data
-public class BrowsingHistory implements Serializable {
-    /**
-     * 
-     */
-    @TableId(type = IdType.AUTO)
-    private Long id;
+@AllArgsConstructor
+@NoArgsConstructor
+public class BrowsingHistory extends BaseEntity {
 
-    /**
-     * 用户id
-     */
+    private static final long serialVersionUID = 1L;
+
+    @Schema(description = "用户id")
+    @TableField("user_id")
     private Long userId;
 
-    /**
-     * 浏览房间id
-     */
+    @Schema(description = "房间id")
+    @TableField("room_id")
     private Long roomId;
 
-    /**
-     * 
-     */
+    @Schema(description = "浏览时间")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @TableField("browse_time")
     private Date browseTime;
 
-    /**
-     * 
-     */
-    private Date createTime;
-
-    /**
-     * 
-     */
-    private Date updateTime;
-
-    /**
-     * 
-     */
-    private Integer isDeleted;
-
-    @TableField(exist = false)
-    private static final long serialVersionUID = 1L;
 }

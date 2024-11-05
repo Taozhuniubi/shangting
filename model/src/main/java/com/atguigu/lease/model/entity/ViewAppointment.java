@@ -1,76 +1,45 @@
 package com.atguigu.lease.model.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
+import com.atguigu.lease.model.enums.AppointmentStatus;
+import io.swagger.v3.oas.annotations.media.Schema;
 import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import java.io.Serializable;
-import java.util.Date;
 import lombok.Data;
 
-/**
- * 预约看房信息表
- * @TableName view_appointment
- */
-@TableName(value ="view_appointment")
-@Data
-public class ViewAppointment implements Serializable {
-    /**
-     * 预约id
-     */
-    @TableId(type = IdType.AUTO)
-    private Long id;
+import java.util.Date;
 
-    /**
-     * 用户id
-     */
+@Schema(description = "预约看房信息表")
+@TableName(value = "view_appointment")
+@Data
+public class ViewAppointment extends BaseEntity {
+
+    private static final long serialVersionUID = 1L;
+
+    @Schema(description = "用户id")
+    @TableField(value = "user_id")
     private Long userId;
 
-    /**
-     * 用户姓名
-     */
+    @Schema(description = "用户姓名")
+    @TableField(value = "name")
     private String name;
 
-    /**
-     * 用户手机号码
-     */
+    @Schema(description = "用户手机号码")
+    @TableField(value = "phone")
     private String phone;
 
-    /**
-     * 公寓id
-     */
-    private Integer apartmentId;
+    @Schema(description = "公寓id")
+    @TableField(value = "apartment_id")
+    private Long apartmentId;
 
-    /**
-     * 预约时间
-     */
+    @Schema(description = "预约时间")
+    @TableField(value = "appointment_time")
     private Date appointmentTime;
 
-    /**
-     * 备注信息
-     */
+    @Schema(description = "备注信息")
+    @TableField(value = "additional_info")
     private String additionalInfo;
 
-    /**
-     * 预约状态（1:待看房，2:已取消，3已看房）
-     */
-    private Integer appointmentStatus;
-
-    /**
-     * 创建时间
-     */
-    private Date createTime;
-
-    /**
-     * 更新时间
-     */
-    private Date updateTime;
-
-    /**
-     * 是否删除
-     */
-    private Integer isDeleted;
-
-    @TableField(exist = false)
-    private static final long serialVersionUID = 1L;
+    @Schema(description = "预约状态")
+    @TableField(value = "appointment_status")
+    private AppointmentStatus appointmentStatus;
 }

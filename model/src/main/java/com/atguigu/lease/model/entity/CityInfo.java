@@ -1,51 +1,23 @@
 package com.atguigu.lease.model.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
+import io.swagger.v3.oas.annotations.media.Schema;
 import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import java.io.Serializable;
-import java.util.Date;
 import lombok.Data;
 
-/**
- * 
- * @TableName city_info
- */
-@TableName(value ="city_info")
+@Schema(description = "城市信息表")
+@TableName(value = "city_info")
 @Data
-public class CityInfo implements Serializable {
-    /**
-     * 城市id
-     */
-    @TableId(type = IdType.AUTO)
-    private Integer id;
+public class CityInfo extends BaseEntity {
 
-    /**
-     * 城市名称
-     */
+    private static final long serialVersionUID = 1L;
+
+    @Schema(description = "城市名称")
+    @TableField(value = "name")
     private String name;
 
-    /**
-     * 所属省份id
-     */
+    @Schema(description = "所属省份id")
+    @TableField(value = "province_id")
     private Integer provinceId;
 
-    /**
-     * 创建时间
-     */
-    private Date createTime;
-
-    /**
-     * 更新时间
-     */
-    private Date updateTime;
-
-    /**
-     * 是否删除
-     */
-    private Integer isDeleted;
-
-    @TableField(exist = false)
-    private static final long serialVersionUID = 1L;
 }
