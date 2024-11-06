@@ -1,4 +1,4 @@
-package com.atguigu.lease.web.admin.controller.system;
+package com.atguigu.lease.web.admin.controller.login.system;
 
 import com.atguigu.lease.common.result.Result;
 import com.atguigu.lease.model.entity.SystemPost;

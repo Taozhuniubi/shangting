@@ -38,4 +38,6 @@ minio:
     servlet:
       multipart:
         max-file-size: 100MB  # 文件上传大小限制
-        max-request-size: 150MB   # 请求大小限制
+        max-request-size: 150MB   # 请求大小限制40MB
+    jackson:
+      date-format: yyyy-MM-dd HH:mm:ss
