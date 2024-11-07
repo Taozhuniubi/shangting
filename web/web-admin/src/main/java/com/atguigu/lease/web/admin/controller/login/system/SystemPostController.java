@@ -54,7 +54,7 @@ public class SystemPostController {
     @Operation(summary = "获取全部岗位列表")
     @GetMapping("list")
     public Result<List<SystemPost>> list() {
-        List<SystemPost> list= service.list();
+        List<SystemPost> list= service.list(new LambdaUpdateWrapper<SystemPost>().eq(SystemPost::getStatus, BaseStatus.ENABLE));
         return Result.ok(list);
     }
 

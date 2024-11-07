@@ -38,7 +38,7 @@ public class LeaseAgreementController {
     public Result<IPage<AgreementVo>> page(@RequestParam long current, @RequestParam long size, AgreementQueryVo queryVo) {
         IPage<AgreementVo> page =new Page<>(current, size);
         IPage<AgreementVo> list= service.pageAgreementByQuery(page, queryVo);
-        return Result.ok();
+        return Result.ok(list);
     }
 
     @Operation(summary = "根据id查询租约信息")

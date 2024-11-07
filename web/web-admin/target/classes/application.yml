@@ -15,29 +15,39 @@ spring:
       maximum-pool-size: 12 #连接池最大连接数，默认是10
       minimum-idle: 10 #最小空闲连接数量
       pool-name: SPHHikariPool # 连接池名称
+  data:
+    redis:
+      host: 192.168.110.128 # redis服务器地址
+      port: 6379 # redis服务端口
+      database: 0 # 数据库索引
+  servlet:
+    multipart:
+      max-file-size: 100MB  # 文件上传大小限制
+      max-request-size: 150MB   # 请求大小限制40MB
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
 
 #用于打印框架生成的sql语句，便于调试
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-
   global-config:
     db-config:
       logic-delete-field: is_deleted # 全局逻辑删除的实体字段名(配置后可以忽略不配置步骤二)
       logic-delete-value: 1 # 逻辑已删除值(默认为 1)
       logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
+      update-strategy: not_null # 字段验证策略之：忽略判断
 
 minio:
   endpoint: http://192.168.110.128:9001 # minio服务所在地址
   access-key: minioadmin  # minio的访问密钥
   secret-key: minioadmin # minio的访问秘钥
-  bucket-name: tzzz # minio的存储桶名称
+  bucket-name: tzzz # minio的存储桶名称A
+
+admin:
+  auth:
+    path-patterns:
+      include: /admin/**
+      exclude: /admin/login/**
 
 
-  spring:
-    servlet:
-      multipart:
-        max-file-size: 100MB  # 文件上传大小限制
-        max-request-size: 150MB   # 请求大小限制40MB
-    jackson:
-      date-format: yyyy-MM-dd HH:mm:ss

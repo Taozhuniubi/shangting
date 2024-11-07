@@ -8,6 +8,7 @@ import com.atguigu.lease.web.admin.service.ViewAppointmentService;
 import com.atguigu.lease.web.admin.vo.appointment.AppointmentQueryVo;
 import com.atguigu.lease.web.admin.vo.appointment.AppointmentVo;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.v3.oas.annotations.Operation;
@@ -34,9 +35,9 @@ public class ViewAppointmentController {
     @Operation(summary = "根据id更新预约状态")
     @PostMapping("updateStatusById")
     public Result updateStatusById(@RequestParam Long id, @RequestParam AppointmentStatus status) {
-        LambdaQueryWrapper<ViewAppointment> updateWrapper = new LambdaQueryWrapper<>();
+        LambdaUpdateWrapper<ViewAppointment> updateWrapper = new LambdaUpdateWrapper<>();
         updateWrapper.eq(ViewAppointment::getId, id);
-        updateWrapper.eq(ViewAppointment::getAppointmentStatus, status);
+        updateWrapper.set(ViewAppointment::getAppointmentStatus, status);
         service.update(updateWrapper);
         return Result.ok();
     }
